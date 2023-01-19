@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>palkka-laskin</title>
+</head>
+<html>
+<body>
+<h1>palkka laskin</h1>
+<form name="palkka">
+    bruttopalkka: <input type="text" name="bruttopalkka"><br>
+    veroprosentti: <input type="text" name="veroprosentti"><br>
+    summa: <input type="text" name="tulos">
+    <br>
+    <input type="button" value="Vero" onclick="vero()">
+    <input type="button" value="Työttömyysvakuutus" onclick="tyottomyysvakuutus()">
+    <input type="button" value="Työeläkevakuutus" onclick="tyoelakevakuutus()">
+    <input type="button" value="Käteen jäävä osuus" onclick="kateenjaavaosuus()">
+    <br>
+</form>
+<script>
+    function vero() { 
+        let n1 = Number(document.palkka.bruttopalkka.value);
+        let n2 = Number(document.palkka.veroprosentti.value);
+        let t = n1 * n2 / 100.0;
+        document.palkka.tulos.value = t;
+    }
+    function tyottomyysvakuutus() {
+        let n1 = Number(document.palkka.bruttopalkka.value);
+        let n2 = Number(0.019);
+        let t = n1 * n2;
+        document.palkka.tulos.value = t;
+
+    }
+    function tyoelakevakuutus() {
+        let n1 = Number(document.palkka.bruttopalkka.value);
+        let n2 = Number(0.0635);
+        let t = n1 * n2;
+        document.palkka.tulos.value = t;
+
+    }
+    function kateenjaavaosuus() {
+        let n1 = Number(document.palkka.bruttopalkka.value);
+        let n2 = Number(document.palkka.veroprosentti.value); 
+        let n3 = Number(0.019)
+        let n4 = Number(0.0635) 
+        let t = n1 - (n1 * n2 / 100.0) - (n1 * n3) - (n1 * n4);  
+        document.palkka.tulos.value = t;
+    }
+    
+    </script>
+    </body>
+    </html
